@@ -14,6 +14,7 @@
   with_items:
      - python
      - postgresql
+     - python2-psycopg2
      - redis
      - git
 
@@ -35,7 +36,14 @@
 #- name: configure django
 #
 
-#- name: configure postgres
+# This doesn't work until you manually init the DB and start PostgreSQL
+- name: Create PostgreSQL User
+  sudo: postgres
+  postgresql_user: name=ps1auth role_attr_flags=SUPERUSER state=present
+
+- name: Create PostgreSQL DB
+  sudo: postgres
+  postgresql_db: name=ps1auth encoding=UTF-8 lc_collate=en_US.UTF-8 owner=ps1auth
 
 #- name: celery??
 
