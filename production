@@ -1,0 +1,2 @@
+[ps1auth]
+ps1auth.ad.pumpingstationone.org ansible_python_interpreter=/usr/bin/python2
