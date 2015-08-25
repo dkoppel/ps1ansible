@@ -1,6 +1,6 @@
 ---
 
-- name: ssh keys
+- name: Add Root SSH Keys
   authorized_key: user=root key={{ item }}
   with_items: #TODO add the keys from saltstack and make this it's own task/role
      - http://github.com/hef.keys
@@ -9,7 +9,7 @@
      - http://github.com/bjonnh.keys
      - http://github.com/codersquid.keys
 
-- name: Install dependencies
+- name: Install Dependencies
   pacman: name={{ item }} state=latest update_cache=yes
   with_items:
      - python
@@ -17,16 +17,17 @@
      - redis
      - git
 
-- name: make ps1auth user
+- name: Create ps1auth User
   user: name=ps1auth state=present
 
-- name: clone repo
+- name: Clone github repository
   git: repo=https://github.com/hef/ps1auth dest={{ app_root }}/app
-- name: install python requirements
+
+- name: Setup Python Environment
   pip: requirements={{ app_root }}/app/requirements/production.txt state=present virtualenv={{ app_root }}/venv
 
-- name: setup bash env
-  copy: src=bashrc dest=/home/ps1auth/.bashrc
+- name: Setup Bash Environment
+  template: src=bashrc dest=/home/ps1auth/.bashrc
 
 #- name: setup ps1auth.conf
 #  copy: src=ps1auth.conf dest=/home/ps1auth/ps1auth.conf
