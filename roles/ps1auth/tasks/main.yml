@@ -1,0 +1,38 @@
+---
+
+- name: ssh keys
+  authorized_key: user=root key={{ item }}
+  with_items: #TODO add the keys from saltstack and make this it's own task/role
+     - http://github.com/hef.keys
+     - http://github.com/dkoppel.keys
+     - http://github.com/loansindi.keys
+     - http://github.com/bjohnn.keys
+     - http://github.com/codersquid.keys
+
+- name: Install dependencies
+  pacman: name={{ item }} state=latest update_cache=yes
+  with_items:
+     - python
+     - postgresql
+     - redis
+     - git
+
+- name: clone repo
+  git: repo=https://github.com/hef/ps1auth dest=/srv/http/ps1auth  
+- name: install python requirements
+  pip: requirements=/srv/http/ps1auth/requirements/production.txt state=present
+
+- name: setup bash env
+  copy: src=bashrc dest=/home/ps1auth/.bashrc
+
+#- name: setup ps1auth.conf
+#  copy: src=ps1auth.conf dest=/home/ps1auth/ps1auth.conf
+
+#- name: configure postgres
+
+#- name: celery??
+
+#- name: configure systemd services
+
+#- name: profit??
+

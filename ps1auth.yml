@@ -1,0 +1,5 @@
+---
+- hosts: ps1auth
+  roles:
+    - common
+    - ps1auth
