@@ -6,7 +6,7 @@
      - http://github.com/hef.keys
      - http://github.com/dkoppel.keys
      - http://github.com/loansindi.keys
-     - http://github.com/bjohnn.keys
+     - http://github.com/bjonnh.keys
      - http://github.com/codersquid.keys
 
 - name: Install dependencies
@@ -16,6 +16,9 @@
      - postgresql
      - redis
      - git
+
+- name: make ps1auth user
+  user: name=ps1auth state=present
 
 - name: clone repo
   git: repo=https://github.com/hef/ps1auth dest=/srv/http/ps1auth  
@@ -27,6 +30,9 @@
 
 #- name: setup ps1auth.conf
 #  copy: src=ps1auth.conf dest=/home/ps1auth/ps1auth.conf
+
+#- name: configure django
+#
 
 #- name: configure postgres
 
