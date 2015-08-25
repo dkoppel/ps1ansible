@@ -1,0 +1,13 @@
+---
+# stubbed, will use for more templating
+app_root: /srv/http/members.pumpingstationone.org
+AD_URL:
+AD_DOMAIN:
+AD_BASEDN:
+AD_BINDDN_PASSWORD:
+SECRET_KEY:
+ZOHO_AUTHTOKEN:
+PAYPAL_RECEIVER_EMAIL:
+SUPPORT_EMAIL_ADDRESS:
+DISCOURSE_BASE_URL:
+DISCOURSE_SSO_SECRET:

@@ -21,9 +21,9 @@
   user: name=ps1auth state=present
 
 - name: clone repo
-  git: repo=https://github.com/hef/ps1auth dest=/srv/http/ps1auth  
+  git: repo=https://github.com/hef/ps1auth dest={{ app_root }}/app
 - name: install python requirements
-  pip: requirements=/srv/http/ps1auth/requirements/production.txt state=present
+  pip: requirements={{ app_root }}/app/requirements/production.txt state=present virtualenv={{ app_root }}/venv
 
 - name: setup bash env
   copy: src=bashrc dest=/home/ps1auth/.bashrc
@@ -41,4 +41,3 @@
 #- name: configure systemd services
 
 #- name: profit??
-
