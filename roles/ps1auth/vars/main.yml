@@ -6,6 +6,7 @@ AD_DOMAIN: VAGRANT
 AD_BASEDN: CN=Users,DC=vagrant,DC=lan
 AD_BINDDN: Administrator@VAGRANT
 AD_BINDDN_PASSWORD: aeng3Oog
+DJANGO_SETTINGS_MODULE: settings.production
 SECRET_KEY: deesohshoayie6PiGoGaghi6thiecaingai2quab2aoheequ8vahsu1phu8ahJio
 ZOHO_AUTHTOKEN: add-your-auth-token
 PAYPAL_RECEIVER_EMAIL: money@vagrant.lan
