@@ -45,6 +45,10 @@
   sudo: postgres
   postgresql_db: name=ps1auth encoding=UTF-8 lc_collate=en_US.UTF-8 owner=ps1auth
 
-#- name: configure systemd services
+- name: Configure systemd (ps1auth-web.service)
+  template: src=ps1auth-web.service.j2 dest=/etc/systemd/system/ps1auth-web.service
+
+- name: Configure systemd (ps1auth-web.socket)
+  template: src=ps1auth-web.socket.j2 dest=/etc/systemd/system/ps1auth-web.socket
 
 #- name: profit??

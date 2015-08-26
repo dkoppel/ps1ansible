@@ -1,0 +1,12 @@
+[Unit]
+Description=PS:One Authentication Web App
+Wants=ps1auth­worker.service
+
+[Service]
+User=ps1auth
+WorkingDirectory={{ app_root }}/app
+ExecStart={{ app_root }}/venv/bin/gunicorn --debug --log-level debug ps1auth.wsgi:application
+EnvironmentFile={{ app_root }}/etc/ps1auth.conf
+
+[Install]
+WantedBy=multi-user.target

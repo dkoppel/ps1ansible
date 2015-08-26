@@ -1,6 +1,6 @@
 ---
 
-app_root: /srv/http/members.pumpingstationone.org
+app_root: /srv/ps1auth
 AD_URL: ldap://localhost
 AD_DOMAIN: VAGRANT
 AD_BASEDN: CN=Users,DC=vagrant,DC=lan

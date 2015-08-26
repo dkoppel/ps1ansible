@@ -1,0 +1,8 @@
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream={{ app_root }}/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
