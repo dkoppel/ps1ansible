@@ -18,8 +18,8 @@
      - redis
      - git
 
-- name: Create ps1auth User
-  user: name=ps1auth state=present
+- name: Create ps1auth User and Application Root Directory
+  user: name=ps1auth state=present home={{ app_root }}
 
 - name: Clone github repository
   git: repo=https://github.com/hef/ps1auth dest={{ app_root }}/app
@@ -28,13 +28,13 @@
   pip: requirements={{ app_root }}/app/requirements/production.txt state=present virtualenv={{ app_root }}/venv
 
 - name: Setup Bash Environment
-  template: src=bashrc.j2 dest=/home/ps1auth/.bashrc
+  template: src=bashrc.j2 dest={{ app_root }}/.bashrc
 
-#- name: setup ps1auth.conf
-#  copy: src=ps1auth.conf dest=/home/ps1auth/ps1auth.conf
+- name: Configure ps1auth.conf
+  template: src=ps1auth.conf.j2 dest={{ app_root }}/etc/ps1auth.conf
 
-#- name: configure django
-#
+- name: Configure config.sh
+  template: src=config.sh.j2 dest={{ app_root }}/config.sh
 
 # This doesn't work until you manually init the DB and start PostgreSQL
 - name: Create PostgreSQL User
@@ -44,8 +44,6 @@
 - name: Create PostgreSQL DB
   sudo: postgres
   postgresql_db: name=ps1auth encoding=UTF-8 lc_collate=en_US.UTF-8 owner=ps1auth
-
-#- name: celery??
 
 #- name: configure systemd services
 
