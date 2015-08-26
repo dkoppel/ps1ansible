@@ -36,7 +36,12 @@
 - name: Configure config.sh
   template: src=config.sh.j2 dest={{ app_root }}/config.sh
 
-# This doesn't work until you manually init the DB and start PostgreSQL
+- name: Initialize PostgreSQL Cluster
+  command: initdb --locale en_US.UTF-8 -E UTF8 -D '/var/lib/postgres/data' creates=/var/lib/postgres/data/PG_VERSION
+
+- name: Start PostgreSQL
+  command: systemctl start postrgresql
+
 - name: Create PostgreSQL User
   sudo: postgres
   postgresql_user: name=ps1auth role_attr_flags=SUPERUSER state=present
