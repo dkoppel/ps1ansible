@@ -28,7 +28,7 @@
   pip: requirements={{ app_root }}/app/requirements/production.txt state=present virtualenv={{ app_root }}/venv
 
 - name: Setup Bash Environment
-  template: src=bashrc dest=/home/ps1auth/.bashrc
+  template: src=bashrc.j2 dest=/home/ps1auth/.bashrc
 
 #- name: setup ps1auth.conf
 #  copy: src=ps1auth.conf dest=/home/ps1auth/ps1auth.conf
