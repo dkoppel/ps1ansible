@@ -12,11 +12,13 @@
 - name: Install Dependencies
   pacman: name={{ item }} state=latest update_cache=yes
   with_items:
-     - python
+     - gcc
+     - git
      - postgresql
+     - python
+     - python-virtualenv
      - python2-psycopg2
      - redis
-     - git
 
 - name: Create ps1auth User and Application Root Directory
   user: name=ps1auth state=present home={{ app_root }}
