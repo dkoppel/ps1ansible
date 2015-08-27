@@ -1,2 +1,3 @@
 [ps1auth]
-10.100.0.133 ansible_python_interpreter=/usr/bin/python2 #kuroishi.ad.pumpingstationone.org
+#10.100.0.133 ansible_python_interpreter=/usr/bin/python2 #kuroishi.ad.pumpingstationone.org
+10.100.7.129 ansible_python_interpreter=/usr/bin/python2
