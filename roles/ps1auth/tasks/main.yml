@@ -42,6 +42,7 @@
   template: src=config.sh.j2 dest={{ app_root }}/config.sh
 
 - name: Initialize PostgreSQL Cluster
+  sudo: postgres
   command: initdb --locale en_US.UTF-8 -E UTF8 -D '/var/lib/postgres/data' creates=/var/lib/postgres/data/PG_VERSION
 
 - name: Start PostgreSQL
