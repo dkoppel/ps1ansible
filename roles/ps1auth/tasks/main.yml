@@ -32,6 +32,9 @@
 - name: Setup Bash Environment
   template: src=bashrc.j2 dest={{ app_root }}/.bashrc
 
+- name: Create ps1auth configuration directory #for some reason template will only create non-existant directories one level deep.
+  file: path={{ app_root }}/etc state=directory mode=0755
+
 - name: Configure ps1auth.conf
   template: src=ps1auth.conf.j2 dest={{ app_root }}/etc/ps1auth.conf
 
